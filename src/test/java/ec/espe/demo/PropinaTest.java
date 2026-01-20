@@ -5,20 +5,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PropinaTest {
 
-  @Test
-  void totalConPropina_calculaPropinaNormal() {
-    double obtenido = Propina.totalConPropina(100.0, 10.0);
-    assertEquals(110.0, obtenido, 0.000001);
-  }
+    @Test
+    void totalConPropina_calculaPropinaNormal() {
+        double subtotal = 100.0;
+        double porcentaje = 10.0;
+        double esperado = 110.0;
 
-  @Test
-  void totalConPropina_subtotalNegativo_lanzaExcepcion() {
-    assertThrows(IllegalArgumentException.class,
-        () -> Propina.totalConPropina(-1.0, 10.0));
-  }
+        double obtenido = Propina.totalConPropina(subtotal, porcentaje);
 
-  // TODO: Agregar al menos 2 pruebas adicionales:
-  //  - porcentaje 0 devuelve subtotal
-  //  - porcentaje 100 duplica subtotal
-  //  - porcentaje fuera de rango lanza excepcion
+        assertEquals(esperado, obtenido, 0.000001);
+    }
+
+    @Test
+    void totalConPropina_subtotalNegativo_lanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class,
+                () -> Propina.totalConPropina(-1.0, 10.0));
+    }
 }
